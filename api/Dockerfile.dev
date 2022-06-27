@@ -4,12 +4,10 @@ WORKDIR /usr/src/app
 
 COPY ./package*.json ./
 
-RUN npm i -g nodemon
-
 RUN npm install --verbose
 
 COPY . .
 
 EXPOSE 3001
 
-CMD [ "nodemon", "-L", "index.js" ]
+CMD [ "npm", "run", "dev" ]
