@@ -14,5 +14,7 @@ app.use(cors());
 app.use(compression());
 
 app.use('/api', appRoutes);
-
+app.get('*', (req, res) => {
+  return res.json(JSON.stringify(req.headers, null, 1))
+})
 app.use(handleError)
