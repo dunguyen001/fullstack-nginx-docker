@@ -4,13 +4,15 @@ services:
   nginx:
     depends_on:
       - api
+      - web
       # - client
     restart: always
     build:
       dockerfile: Dockerfile
       context: ./nginx
     ports:
-      - "3050:80"
+      - "8080:80"
+      - "8081:4000"
 
   mongodb:
     image: mongo:latest
@@ -31,5 +33,18 @@ services:
     volumes:
       - /usr/src/app/node_modules
       - ./api:/usr/src/app
-    ports:
-      - ${PORT:-3001}:3001
+    # ports:
+    #   - ${PORT:-3001}:3001
+
+  web:
+    build:
+      dockerfile: Dockerfile.dev
+      context: "./web"
+    environment:
+      PORT: 3000
+      HOST: 0.0.0.0
+    volumes:
+      - /usr/src/web/node_modules
+      - ./web:/usr/src/web
+    # ports:
+    #   - ${PORT:-3000}:3000
