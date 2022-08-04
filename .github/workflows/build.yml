@@ -13,7 +13,7 @@ jobs:
     runs-on: "ubuntu-latest"
     strategy:
       matrix:
-        dir: ['api', 'web']
+        dir: ['api']
         node: [16]
     
     steps:
