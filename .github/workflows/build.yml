@@ -9,11 +9,12 @@ on:
       - "develop"
 
 jobs:
-  build_and_test_api:
+  build_and_test:
     runs-on: "ubuntu-latest"
     strategy:
       matrix:
-        node: [16,17]
+        dir: ['api', 'web']
+        node: [16]
     
     steps:
       - name: Checkout
@@ -22,8 +23,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: switch to srouce api
-        run: cd api
       - name: Install project
         run: npm install
       - name: Build the project
