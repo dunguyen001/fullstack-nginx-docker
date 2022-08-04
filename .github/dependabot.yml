@@ -1,12 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/api"
-    schedule:
-      interval: "daily"
-    target-branch: "develop"
-  - package-ecosystem: "npm"
-    directory: "/web"
+    directory: "/"
     schedule:
       interval: "daily"
     target-branch: "develop"
